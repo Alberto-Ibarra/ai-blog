@@ -10,13 +10,17 @@ export default function NewPost() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const response = await fetch(`/api/generatePost`, {
+            // post request to server end point ^^
             method:'POST',
+            //indicates that the request body is in JSON format
             headers: {
                 'content-type': 'application/json'
             },
+            //JSON_encoded request body from form
             body: JSON.stringify({topic, keywords})
         })
         const json = await response.json()
+
         setPostContent(json.post.postContent);
     }
 
